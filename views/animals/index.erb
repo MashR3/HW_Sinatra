@@ -2,6 +2,8 @@
 
 <% @animals.each_with_index do |ani, num| %>
 	
-	<a href="animals/<%= num %>"<h4><%= ani[:title] %></h4></a>
+	<a href="animals/<%= num %>"<li><ul><%= ani[:title] %><ul></li></a>
+
+	<button><a href="animals/<%= num %>/edit">Update Creature</a></button>
 
 <% end %>

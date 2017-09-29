@@ -7,3 +7,11 @@
 	<ul><%= @animal[:dob] %></ul>
 </li>
 
+
+	<button><a href="animals/<%= @id %>/edit">Update</a></button>
+
+
+	<form action="/animals/<%= @id %>" method="POST">
+			<input type="hidden" name="_method" value="DELETE">
+			<input type="submit" value="DELETE">
+	</form>

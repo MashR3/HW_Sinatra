@@ -45,10 +45,44 @@ $creatures = [{
 	end
 
 	get '/animals/:id' do 
-		id = params[:id].to_i
-		@animal = $creatures[id]
+		@id = params[:id].to_i
+		@animal = $creatures[@id]
 		erb :'animals/show'
 	end
+
+	post "/animals" do
+		new_animal = {
+			title: params[:title],
+			descr: params[:descr],
+			dob: params[:dob]
+		}
+		$creatures << new_animal
+		redirect '/animals'
+	end
+
+	get '/animals/:id/edit' do
+		@id = params[:id].to_i
+		@animal = $creatures[@id]
+
+		erb :'/animals/edit'
+	end
+
+	put "/animals/:id" do
+		
+		id = params[:id].to_i
+		$creatures[id][:title] = params[:title]
+		$creatures[id][:descr] = params[:descr]
+		$creatures[id][:dob] = params[:dob]
+
+		redirect "/posts/#{id}"
+	end
+
+	delete '/animals/:id' do
+		id = params[:id].to_i
+		$creatures.delete_at(id)
+		redirect "/animals"
+	end
+
 
 
 

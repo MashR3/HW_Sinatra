@@ -1,0 +1,18 @@
+<h1>Update Creature Facts</h1>
+
+<form action="/animals/<%= @id %>" method="POST">
+  
+  <label for="title">Name: </label>
+  <input type="text" name="title" value="<%= @animal[:title] %>">
+
+  <label for="body">Description: </label>
+  <textarea name="descr"><%= @animal[:descr] %></textarea>
+
+  <label for="body">DOB: </label>
+  <textarea name="dob"><%= @animal[:dob] %></textarea>
+
+
+  <input type="hidden" name="_method" value="PUT">
+
+  <input type="submit" value="Update">
+</form>
